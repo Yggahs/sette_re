@@ -1,0 +1,7 @@
+{
+  "name": "sette_re",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
