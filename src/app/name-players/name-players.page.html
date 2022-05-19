@@ -1,0 +1,15 @@
+<ion-content>
+  <form [formGroup]="nomiGiocatoriForm" (ngSubmit)="onSubmit()">
+    <ion-item *ngFor="let number of arrayIterator">
+      <ion-label>Nome Giocatore {{number+1}}: </ion-label>
+      <ion-input type="text" formControlName="nome{{number}}"></ion-input>
+    </ion-item>
+    <ion-button
+      type="submit"
+      expand="block"
+      routerLink="/rules"
+      [disabled]="false"
+      >Procedi alle regole</ion-button
+    >
+  </form>
+</ion-content>

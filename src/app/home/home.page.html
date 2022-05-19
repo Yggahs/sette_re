@@ -33,7 +33,10 @@
     </ion-row>
     <ion-row class="ion-padding-vertical ion-align-items-end">
       <ion-col
-        ><ion-button expand="block" routerLink="/rules" disabled="true"
+        ><ion-button
+          expand="block"
+          routerLink="/name-players"
+          [disabled]="!this.chosenNumber"
           >Iniziamo!</ion-button
         ></ion-col
       >
