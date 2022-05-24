@@ -11,7 +11,7 @@ export class NamePlayersPage implements OnInit {
   numeroGiocatori = this.servizioGioco.numeroGiocatori;
   nomiGiocatoriForm = new FormGroup({ nome0: new FormControl('') });
   arrayIterator: any;
-  arrayNomi: string[];
+  arrayNomi: string[] = [];
   constructor(private servizioGioco: GiocoService) {
     this.arrayIterator = Array(this.servizioGioco.numeroGiocatori)
       .fill(1)
@@ -28,9 +28,8 @@ export class NamePlayersPage implements OnInit {
     this.nomiGiocatoriForm = new FormGroup(this.oggettoNomi);
   }
   onSubmit() {
-    console.log(this.nomiGiocatoriForm.value);
-    for (let nome of this.nomiGiocatoriForm.value) {
-      this.arrayNomi.push(nome);
+    for (let nome in this.nomiGiocatoriForm.value) {
+      this.arrayNomi.push(this.nomiGiocatoriForm.value[nome]);
     }
     console.log(this.arrayNomi);
   }
