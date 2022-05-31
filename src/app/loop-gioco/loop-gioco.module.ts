@@ -9,12 +9,7 @@ import { LoopGiocoPageRoutingModule } from './loop-gioco-routing.module';
 import { LoopGiocoPage } from './loop-gioco.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    LoopGiocoPageRoutingModule
-  ],
-  declarations: [LoopGiocoPage]
+  imports: [CommonModule, FormsModule, IonicModule, LoopGiocoPageRoutingModule],
+  declarations: [LoopGiocoPage],
 })
 export class LoopGiocoPageModule {}

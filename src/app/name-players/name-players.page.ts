@@ -31,6 +31,7 @@ export class NamePlayersPage implements OnInit {
     for (let nome in this.nomiGiocatoriForm.value) {
       this.arrayNomi.push(this.nomiGiocatoriForm.value[nome]);
     }
-    console.log(this.arrayNomi);
+    this.servizioGioco.nomiGiocatori = this.arrayNomi;
+    //console.log(this.arrayNomi);
   }
 }

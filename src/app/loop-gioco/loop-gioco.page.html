@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>loopGioco</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-grid>
+    <ion-row *ngIf="turnNumber <=7">
+      <ion-col class="ion-text-center">
+        <h1>Turno {{turnNumber}}</h1>
+        <h2>Giocatore corrente: {{playerNamesArray[currentPlayerIndex]}}</h2>
+        <ion-button (click)="passTurn()">Passa il turno</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="turnNumber>7">
+      <ion-col class="ion-text-center">
+        <h3>Gioco completato. Ricominciare?</h3>
+        <ion-button routerLink="/home">Ricomincia</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
