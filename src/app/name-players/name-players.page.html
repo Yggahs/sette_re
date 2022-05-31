@@ -1,15 +1,22 @@
 <ion-content>
-  <form [formGroup]="nomiGiocatoriForm" (ngSubmit)="onSubmit()">
-    <ion-item *ngFor="let number of arrayIterator">
-      <ion-label>Nome Giocatore {{number+1}}: </ion-label>
-      <ion-input type="text" formControlName="nome{{number}}"></ion-input>
-    </ion-item>
-    <ion-button
-      type="submit"
-      expand="block"
-      routerLink="/rules"
-      [disabled]="false"
-      >Procedi alle regole</ion-button
-    >
-  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="nomiGiocatoriForm" (ngSubmit)="onSubmit()">
+          <ion-item *ngFor="let number of arrayIterator">
+            <ion-label>Nome Giocatore {{number+1}}: </ion-label>
+            <ion-input type="text" formControlName="nome{{number}}"></ion-input>
+          </ion-item>
+          <ion-button
+            class="ion-align-self-end"
+            type="submit"
+            expand="block"
+            routerLink="/rules"
+            [disabled]="false"
+            >Procedi alle regole</ion-button
+          >
+        </form></ion-col
+      >
+    </ion-row>
+  </ion-grid>
 </ion-content>

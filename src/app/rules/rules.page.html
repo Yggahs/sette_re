@@ -1,5 +1,11 @@
 <ion-content [fullscreen]="true">
-  <swiper [pagination]="true">
+  <swiper
+    class="swiperFull"
+    [pagination]="{
+    type: 'progressbar'
+  }"
+    [navigation]="true"
+  >
     <ng-template class="ion-padding-vertical" swiperSlide>
       <ion-grid>
         <ion-row>
@@ -58,9 +64,7 @@
             </p></ion-col
           >
           <ion-col class="ion-padding-vertical" size="12">
-            <ion-button routerLink="/loop-gioco"
-              >iniziamo, un'altra volta</ion-button
-            >
+            <ion-button routerLink="/loop-gioco">Iniziamo!</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
