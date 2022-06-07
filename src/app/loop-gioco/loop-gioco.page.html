@@ -1,14 +1,21 @@
 <ion-content>
   <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center"
+        ><ion-spinner
+          *ngIf="currentQuestion=='' || aumentoIntensita"
+          name="crescent"
+        ></ion-spinner
+      ></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="currentQuestion!=''">
     <ion-row *ngIf="turnNumber <=7">
       <ion-col class="ion-text-center">
         <h1>Turno {{turnNumber}}</h1>
         <h2>Giocatore corrente: {{playerNamesArray[currentPlayerIndex]}}</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at
-          ullamcorper libero, id interdum lectus. Vestibulum nec dui feugiat,
-          feugiat nulla eu, euismod est.
-        </p>
+        <p>{{currentQuestion}}</p>
         <ion-button (click)="passTurn()">Passa il turno</ion-button>
       </ion-col>
     </ion-row>

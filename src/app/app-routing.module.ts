@@ -4,31 +4,44 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'rules',
-    loadChildren: () => import('./rules/rules.module').then( m => m.RulesPageModule)
-  },  {
+    loadChildren: () =>
+      import('./rules/rules.module').then((m) => m.RulesPageModule),
+  },
+  {
     path: 'name-players',
-    loadChildren: () => import('./name-players/name-players.module').then( m => m.NamePlayersPageModule)
+    loadChildren: () =>
+      import('./name-players/name-players.module').then(
+        (m) => m.NamePlayersPageModule
+      ),
   },
   {
     path: 'loop-gioco',
-    loadChildren: () => import('./loop-gioco/loop-gioco.module').then( m => m.LoopGiocoPageModule)
+    loadChildren: () =>
+      import('./loop-gioco/loop-gioco.module').then(
+        (m) => m.LoopGiocoPageModule
+      ),
   },
-
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
