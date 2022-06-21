@@ -11,8 +11,10 @@ export class GiocoService {
   nomiGiocatori: string[];
   numeroIntensita: string;
   arrayIntensitaUno: string[] = [];
+
   urlFirebase: string =
     'https://firestore.googleapis.com/v1/projects/sette-re-c674a/databases/(default)/documents/domande/intensita_';
+
   urlTemp: string;
   currentQuestion: string = '';
   getFrasi(instensita: number) {

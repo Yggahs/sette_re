@@ -13,6 +13,14 @@ export class HomePage {
   ) {}
 
   chosenNumber: boolean = false;
+  categoryToggle: boolean = false;
+  array: number[] = [1, 2, 3];
+
+  ngOnInit() {
+    for (let categorie in this.array) {
+      console.log(categorie);
+    }
+  }
 
   async pickPlayerCount() {
     const picker = await this.pickerController.create({
@@ -46,5 +54,10 @@ export class HomePage {
       ],
     });
     await picker.present();
+  }
+
+  toggleCategories() {
+    this.categoryToggle = !this.categoryToggle;
+    console.log(this.categoryToggle);
   }
 }
