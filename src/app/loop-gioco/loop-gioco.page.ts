@@ -10,7 +10,7 @@ export class LoopGiocoPage implements OnInit {
   playerNamesArray: string[];
   currentPlayerIndex: number = 0;
   turnNumber: number = 1;
-  currentQuestion: String = '';
+  currentQuestion: string = '';
   arrayIntensita: string[] = [];
   aumentoIntensita: boolean = false;
 
@@ -19,7 +19,9 @@ export class LoopGiocoPage implements OnInit {
   ngOnInit() {
     this.playerNamesArray = this.servizioGioco.nomiGiocatori;
 
-    this.servizioGioco.getFrasi(this.turnNumber).subscribe(
+    console.log(this.servizioGioco.getFrasi());
+
+    this.servizioGioco.getFrasi().subscribe(
       (x: any) => {
         Object.keys(x.fields).forEach((key) => {
           this.arrayIntensita.push(x.fields[key].stringValue);
@@ -42,7 +44,7 @@ export class LoopGiocoPage implements OnInit {
       this.turnNumber++;
       this.currentPlayerIndex = 0;
       this.aumentoIntensita = true;
-      this.servizioGioco.getFrasi(this.turnNumber).subscribe(
+      this.servizioGioco.getFrasi().subscribe(
         (x: any) => {
           Object.keys(x.fields).forEach((key) => {
             this.arrayIntensita.push(x.fields[key].stringValue);

@@ -12,40 +12,47 @@ export class GiocoService {
   numeroIntensita: string;
   arrayIntensitaUno: string[] = [];
 
+  // urlFirebase: string =
+  //   'https://firestore.googleapis.com/v1/projects/sette-re-c674a/databases/(default)/documents/domande/intensita_';
+
   urlFirebase: string =
-    'https://firestore.googleapis.com/v1/projects/sette-re-c674a/databases/(default)/documents/domande/intensita_';
+    'https://firestore.googleapis.com/v1/projects/sette-re-c674a/databases/(default)/documents/domande_2/collezione_domande/arrayIntensita';
 
-  urlTemp: string;
+  // urlTemp: string;
   currentQuestion: string = '';
-  getFrasi(instensita: number) {
-    switch (instensita) {
-      case 1:
-        this.numeroIntensita = 'uno';
-        break;
-      case 2:
-        this.numeroIntensita = 'due';
-        break;
-      case 3:
-        this.numeroIntensita = 'tre';
-        break;
-      case 4:
-        this.numeroIntensita = 'quattro';
-        break;
-      case 5:
-        this.numeroIntensita = 'cinque';
-        break;
-      case 6:
-        this.numeroIntensita = 'sei';
-        break;
-      case 7:
-        this.numeroIntensita = 'sette';
-        break;
-      default:
-        this.numeroIntensita = 'uno';
-        break;
-    }
-    this.urlTemp = this.urlFirebase + this.numeroIntensita;
+  // getFrasi(instensita: number) {
+  //   switch (instensita) {
+  //     case 1:
+  //       this.numeroIntensita = 'uno';
+  //       break;
+  //     case 2:
+  //       this.numeroIntensita = 'due';
+  //       break;
+  //     case 3:
+  //       this.numeroIntensita = 'tre';
+  //       break;
+  //     case 4:
+  //       this.numeroIntensita = 'quattro';
+  //       break;
+  //     case 5:
+  //       this.numeroIntensita = 'cinque';
+  //       break;
+  //     case 6:
+  //       this.numeroIntensita = 'sei';
+  //       break;
+  //     case 7:
+  //       this.numeroIntensita = 'sette';
+  //       break;
+  //     default:
+  //       this.numeroIntensita = 'uno';
+  //       break;
+  //   }
+  //   this.urlTemp = this.urlFirebase + this.numeroIntensita;
 
-    return this.http.get(this.urlTemp);
+  //   return this.http.get(this.urlTemp);
+  // }
+  getFrasi() {
+    //for()
+    return this.http.get(this.urlFirebase);
   }
 }
