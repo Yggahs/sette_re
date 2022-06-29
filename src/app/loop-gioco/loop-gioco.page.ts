@@ -23,13 +23,7 @@ export class LoopGiocoPage implements OnInit {
 
     this.servizioGioco.getFrasi().subscribe(
       (x: any) => {
-        Object.keys(x.fields).forEach((key) => {
-          this.arrayIntensita.push(x.fields[key].stringValue);
-        });
-        this.currentQuestion =
-          this.arrayIntensita[
-            Math.floor(Math.random() * this.arrayIntensita.length)
-          ];
+        this.popolaArrayIntensita(x);
       },
       (err) => {
         console.log(err);
@@ -46,13 +40,7 @@ export class LoopGiocoPage implements OnInit {
       this.aumentoIntensita = true;
       this.servizioGioco.getFrasi().subscribe(
         (x: any) => {
-          Object.keys(x.fields).forEach((key) => {
-            this.arrayIntensita.push(x.fields[key].stringValue);
-          });
-          this.currentQuestion =
-            this.arrayIntensita[
-              Math.floor(Math.random() * this.arrayIntensita.length)
-            ];
+          this.popolaArrayIntensita(x);
         },
         (err) => {
           console.log(err);
@@ -64,6 +52,25 @@ export class LoopGiocoPage implements OnInit {
     } else {
       this.currentPlayerIndex++;
     }
+    this.currentQuestion =
+      this.arrayIntensita[
+        Math.floor(Math.random() * this.arrayIntensita.length)
+      ];
+  }
+  popolaArrayIntensita(oggettoDomande: any) {
+    oggettoDomande.fields.arrayIntensita.arrayValue.values.forEach(
+      (intensita, i) => {
+        if (i == this.turnNumber - 1) {
+          intensita.mapValue.fields.domande.arrayValue.values.forEach(
+            (tracce, j) => {
+              this.arrayIntensita.push(
+                tracce.mapValue.fields.domanda.stringValue
+              );
+            }
+          );
+        }
+      }
+    );
     this.currentQuestion =
       this.arrayIntensita[
         Math.floor(Math.random() * this.arrayIntensita.length)
