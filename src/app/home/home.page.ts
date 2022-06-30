@@ -9,17 +9,27 @@ import { GiocoService } from '../servizio-gioco.service';
 export class HomePage {
   constructor(
     private pickerController: PickerController,
-    private servizioGioco: GiocoService
+    public servizioGioco: GiocoService
   ) {}
 
   chosenNumber: boolean = false;
   categoryToggle: boolean = false;
-  array: number[] = [1, 2, 3];
-
+  arrayCategorie: string[] = [];
+  oggettoCategorie: any;
   ngOnInit() {
-    for (let categorie in this.array) {
-      console.log(categorie);
-    }
+    this.servizioGioco.getCategorie().subscribe(
+      (x: any) => {
+        this.oggettoCategorie = x.fields.arrayCategorie.arrayValue.values;
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        this.oggettoCategorie.forEach((categoria) => {
+          this.arrayCategorie.push(categoria.stringValue);
+        });
+      }
+    );
   }
 
   async pickPlayerCount() {
@@ -57,7 +67,12 @@ export class HomePage {
   }
 
   toggleCategories() {
-    this.categoryToggle = !this.categoryToggle;
-    console.log(this.categoryToggle);
+    this.servizioGioco.toggleCategorie = !this.servizioGioco.toggleCategorie;
+  }
+
+  selezionaCategorie() {
+    if (this.servizioGioco.toggleCategorie) {
+      this.servizioGioco.arrayCategorieSelezionate = this.arrayCategorie;
+    }
   }
 }

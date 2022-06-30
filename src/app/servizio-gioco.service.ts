@@ -10,13 +10,19 @@ export class GiocoService {
   numeroGiocatori: number;
   nomiGiocatori: string[];
   numeroIntensita: string;
-  arrayIntensitaUno: string[] = [];
-  urlFirebase: string =
+  arrayCategorieSelezionate: string[] = [];
+  toggleCategorie: boolean = false;
+  urlDomande: string =
     'https://firestore.googleapis.com/v1/projects/sette-re-c674a/databases/(default)/documents/domande_2/collezione_domande';
-
+  urlCategorie: string =
+    'https://firestore.googleapis.com/v1/projects/sette-re-c674a/databases/(default)/documents/categorie/collezione_categorie';
   currentQuestion: string = '';
 
   getFrasi() {
-    return this.http.get(this.urlFirebase);
+    return this.http.get(this.urlDomande);
+  }
+
+  getCategorie() {
+    return this.http.get(this.urlCategorie);
   }
 }

@@ -1,0 +1,7 @@
+<div *ngIf="!showButton">
+  <p>{{ timeLeft }}s</p>
+</div>
+
+<div *ngIf="showButton">
+  <ion-button (click)="passTurn()">Passa il Turno</ion-button>
+</div>

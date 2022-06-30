@@ -26,11 +26,11 @@
       </ion-col>
 
       <ion-row>
-        <ion-col *ngIf="categoryToggle">
+        <ion-col *ngIf="servizioGioco.toggleCategorie">
           <ion-label>Categorie</ion-label>
           <ion-select multiple="true" cancelText="Annulla" okText="Accetta">
             <ion-select-option
-              *ngFor="let categorie of array"
+              *ngFor="let categorie of arrayCategorie"
               [value]="categorie"
               >{{categorie}}</ion-select-option
             >
@@ -48,6 +48,7 @@
           expand="block"
           routerLink="/name-players"
           [disabled]="!this.chosenNumber"
+          (click)="selezionaCategorie()"
           >Seleziona nomi giocatori</ion-button
         ></ion-col
       >

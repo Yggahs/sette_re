@@ -19,8 +19,6 @@ export class LoopGiocoPage implements OnInit {
   ngOnInit() {
     this.playerNamesArray = this.servizioGioco.nomiGiocatori;
 
-    console.log(this.servizioGioco.getFrasi());
-
     this.servizioGioco.getFrasi().subscribe(
       (x: any) => {
         this.popolaArrayIntensita(x);
@@ -63,9 +61,24 @@ export class LoopGiocoPage implements OnInit {
         if (i == this.turnNumber - 1) {
           intensita.mapValue.fields.domande.arrayValue.values.forEach(
             (tracce, j) => {
-              this.arrayIntensita.push(
-                tracce.mapValue.fields.domanda.stringValue
-              );
+              if (this.servizioGioco.toggleCategorie) {
+                this.servizioGioco.arrayCategorieSelezionate.forEach(
+                  (categoriaSelezionata, k) => {
+                    if (
+                      categoriaSelezionata ==
+                      tracce.mapValue.fields.categoria.stringValue
+                    ) {
+                      this.arrayIntensita.push(
+                        tracce.mapValue.fields.domanda.stringValue
+                      );
+                    }
+                  }
+                );
+              } else {
+                this.arrayIntensita.push(
+                  tracce.mapValue.fields.domanda.stringValue
+                );
+              }
             }
           );
         }
@@ -75,5 +88,6 @@ export class LoopGiocoPage implements OnInit {
       this.arrayIntensita[
         Math.floor(Math.random() * this.arrayIntensita.length)
       ];
+    console.log(this.arrayIntensita);
   }
 }

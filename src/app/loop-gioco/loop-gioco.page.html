@@ -16,7 +16,8 @@
         <h1>Turno {{turnNumber}}</h1>
         <h2>Giocatore corrente: {{playerNamesArray[currentPlayerIndex]}}</h2>
         <p>{{currentQuestion}}</p>
-        <ion-button (click)="passTurn()">Passa il turno</ion-button>
+        <!-- <ion-button (click)="passTurn()">Passa il turno</ion-button> -->
+        <app-timer (itemEmitter)="passTurn()"></app-timer>
       </ion-col>
     </ion-row>
     <ion-row *ngIf="turnNumber>7">

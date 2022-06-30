@@ -7,9 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { LoopGiocoPageRoutingModule } from './loop-gioco-routing.module';
 
 import { LoopGiocoPage } from './loop-gioco.page';
+import { TimerComponent } from '../timer/timer.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, LoopGiocoPageRoutingModule],
-  declarations: [LoopGiocoPage],
+  declarations: [LoopGiocoPage, TimerComponent],
 })
 export class LoopGiocoPageModule {}
