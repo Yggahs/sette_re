@@ -7,8 +7,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class GiocoService {
   constructor(private http: HttpClient) {}
-  numeroGiocatori: number;
-  nomiGiocatori: string[];
+
   numeroIntensita: string;
   arrayCategorieSelezionate: string[] = [];
   toggleCategorie: boolean = false;
