@@ -7,8 +7,6 @@ import { GiocoService } from '../servizio-gioco.service';
   styleUrls: ['./loop-gioco.page.scss'],
 })
 export class LoopGiocoPage implements OnInit {
-  playerNamesArray: string[];
-  currentPlayerIndex: number = 0;
   turnNumber: number = 1;
   currentQuestion: string = '';
   arrayIntensita: string[] = [];
@@ -17,8 +15,6 @@ export class LoopGiocoPage implements OnInit {
   constructor(private servizioGioco: GiocoService) {}
 
   ngOnInit() {
-    this.playerNamesArray = this.servizioGioco.nomiGiocatori;
-
     this.servizioGioco.getFrasi().subscribe(
       (x: any) => {
         this.popolaArrayIntensita(x);
@@ -31,25 +27,20 @@ export class LoopGiocoPage implements OnInit {
   }
 
   passTurn() {
-    if (this.currentPlayerIndex + 1 >= this.playerNamesArray.length) {
-      this.arrayIntensita = [];
-      this.turnNumber++;
-      this.currentPlayerIndex = 0;
-      this.aumentoIntensita = true;
-      this.servizioGioco.getFrasi().subscribe(
-        (x: any) => {
-          this.popolaArrayIntensita(x);
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          this.aumentoIntensita = false;
-        }
-      );
-    } else {
-      this.currentPlayerIndex++;
-    }
+    this.arrayIntensita = [];
+    this.turnNumber++;
+    this.aumentoIntensita = true;
+    this.servizioGioco.getFrasi().subscribe(
+      (x: any) => {
+        this.popolaArrayIntensita(x);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        this.aumentoIntensita = false;
+      }
+    );
     this.currentQuestion =
       this.arrayIntensita[
         Math.floor(Math.random() * this.arrayIntensita.length)
