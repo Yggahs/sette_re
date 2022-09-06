@@ -12,6 +12,7 @@ export class HomePage {
     public servizioGioco: GiocoService
   ) {}
 
+  knowRules: boolean = false;
   chosenNumber: boolean = false;
   categoryToggle: boolean = false;
   arrayCategorie: string[] = [];
@@ -40,5 +41,9 @@ export class HomePage {
     if (this.servizioGioco.toggleCategorie) {
       this.servizioGioco.arrayCategorieSelezionate = this.arrayCategorie;
     }
+  }
+  toggleRules() {
+    this.knowRules = !this.knowRules;
+    console.log(this.knowRules);
   }
 }

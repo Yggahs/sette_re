@@ -42,11 +42,17 @@
       <ion-col size="12"
         ><ion-button
           expand="block"
-          routerLink="/rules"
+          [routerLink]="knowRules?['/loop-gioco']:['/rules']"
           (click)="selezionaCategorie()"
-          >Procedi al gioco</ion-button
+          >Procedi al{{knowRules?' gioco':'le regole'}}</ion-button
         ></ion-col
       >
+      <ion-col size="12">
+        <ion-item>
+          <ion-checkbox slot="start" (click)="toggleRules()"></ion-checkbox>
+          <ion-label>Conosco già le regole</ion-label>
+        </ion-item>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
